@@ -37,4 +37,14 @@ class Hero extends Unit{
 		}
 		System.out.printf("히어로가 %d의 공격력으로 공격: 현재 Enemy hp: %d\n", power, enemy.getHp());
 	}
+	
+	public void recovery() {
+		if(count > 0) {
+			setHp(getHp() + 100);
+			System.out.println("체력 회복해서" + getHp() +"이 되었습니다.");
+			count -= 1;
+		} else if(count == 0) {
+			System.out.println("모두 사용했습니다.");
+		}
+	}
 }
