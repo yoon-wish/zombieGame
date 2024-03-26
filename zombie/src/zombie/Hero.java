@@ -41,7 +41,10 @@ class Hero extends Unit implements Recovery{
 	@Override
 	public void recovery() {
 		if(count > 0) {
-			setHp(getHp() + 100);
+			if(getHp() + 100 > this.MAX_HP)
+				setHp(this.MAX_HP);
+			else
+				setHp(getHp() + 100);
 			System.out.println("체력 회복해서" + getHp() +"이 되었습니다.");
 			count -= 1;
 		} else if(count == 0) {
