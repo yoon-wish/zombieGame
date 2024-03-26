@@ -10,7 +10,7 @@ public class Zombie extends Unit {
 	
 	@Override
 	void attack(Unit hero) {
-		 power = r.nextInt(this.getMax()) + 1;
+		 power = (r.nextInt(this.getMax()) + 1) / 2;
 		 
 		 hero.setHp(hero.getHp() - power);
 		 if(hero.getHp() <= 0)
