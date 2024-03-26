@@ -18,7 +18,7 @@ public class Zombie extends Unit {
 		if (getHp() + power / 2 > this.MAX_HP)
 			setHp(this.MAX_HP);
 		else
-			setHp(getHp() + 100);
+			setHp(getHp() + power / 2);
 
 		System.out.printf("[%s]가 %d의 공격력으로 공격\n현재 [Hero] hp: %d, [%s] 체력 회복 %d\n", this.getName(), power, hero.getHp(),
 				this.getName(), this.getHp());
