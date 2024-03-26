@@ -4,8 +4,8 @@ class Hero extends Unit implements Recovery{
 	int power;
 	int count;
 	
-	public Hero(int pos, int hp, int max, int count, boolean isEnemy) {
-		super(pos, hp, max, isEnemy);
+	public Hero(String name, int pos, int hp, int max, int count, boolean isEnemy) {
+		super("Hero", pos, hp, max, isEnemy);
 		this.count = count;
 	}
 	
@@ -29,14 +29,13 @@ class Hero extends Unit implements Recovery{
 			if(boss.getHp() <= 0 )
 				boss.setHp(0);
 			
-			System.out.printf("히어로가 %d의 공격력으로 공격: 현재 Boss의 hp: %d 현재 Boss의 Shield: %d\n", power, boss.getHp(), boss.getShield());
+			System.out.printf("히어로가 %d의 공격력으로 공격\n현재 Boss의 hp: %d 현재 Boss의 Shield: %d\n", power, boss.getHp(), boss.getShield());
 		} else {
 			power = r.nextInt(getMax()) + 1;
 			enemy.setHp(enemy.getHp() - power);
 			if(enemy.getHp()<=0)
 				enemy.setHp(0);
 		}
-		System.out.printf("히어로가 %d의 공격력으로 공격: 현재 Enemy hp: %d\n", power, enemy.getHp());
 	}
 
 	@Override
