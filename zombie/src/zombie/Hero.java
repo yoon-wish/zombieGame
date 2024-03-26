@@ -1,14 +1,13 @@
 package zombie;
 
-class Hero extends Unit{
+class Hero extends Unit implements Recovery{
 	int power;
-	int count;
 	
-	public Hero(int pos, int hp, int max, int count, boolean isEnemy) {
+	public Hero(int pos, int hp, int max, boolean isEnemy) {
 		super(pos, hp, max, isEnemy);
-		this.count = count;
 	}
 	
+	@Override
 	public void attack(Unit enemy) {
 		if(enemy instanceof Boss) {	// 적이 보스일 때
 			Boss boss = (Boss) enemy;
@@ -37,8 +36,9 @@ class Hero extends Unit{
 		}
 		System.out.printf("히어로가 %d의 공격력으로 공격: 현재 Enemy hp: %d\n", power, enemy.getHp());
 	}
-	
-	public void recovery() {
+
+	@Override
+	public void recovery(int count) {
 		if(count > 0) {
 			setHp(getHp() + 100);
 			System.out.println("체력 회복해서" + getHp() +"이 되었습니다.");
@@ -46,5 +46,8 @@ class Hero extends Unit{
 		} else if(count == 0) {
 			System.out.println("모두 사용했습니다.");
 		}
+		
 	}
+	
+	
 }
