@@ -9,6 +9,10 @@ public class Dracula extends Unit {
 		this.name = "Dracula";
 	}
 	
+	public String getName() {
+		return this.name;
+	}
+	
 	@Override
 	void attack(Unit hero) {
 		 power = (r.nextInt(this.getMax()) + 1) / 2;

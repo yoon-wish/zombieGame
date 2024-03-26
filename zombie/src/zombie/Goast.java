@@ -9,6 +9,10 @@ public class Goast extends Unit {
 		this.name  = "Goast";
 	}
 	
+	public String getName() {
+		return this.name;
+	}
+	
 	@Override
 	void attack(Unit hero) {
 		 power = (r.nextInt(this.getMax()) + 1) / 2;
