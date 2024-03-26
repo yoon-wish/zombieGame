@@ -1,7 +1,5 @@
 package zombie;
 
-import java.util.Random;
-
 abstract public class Unit {
 	private int pos;
 	private int hp;
@@ -12,7 +10,7 @@ abstract public class Unit {
 		this.pos = pos;
 		this.hp = hp;
 		this.max = max;
-		this.isEnemy = isEnemy;
+		this.isEnemy = isEnemy;	// 몬스터 여부
 	}
 
 	public boolean IsEnemy() {
