@@ -2,10 +2,11 @@ package zombie;
 
 public class Dracula extends Unit {
 	int power;
-	String name = "Dracula";
+	String name;
 	
 	public Dracula(int pos, int hp, int max, boolean isEnemy) {
 		super(pos, hp, max, isEnemy);
+		this.name = "Dracula";
 	}
 	
 	@Override

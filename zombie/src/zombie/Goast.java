@@ -2,10 +2,11 @@ package zombie;
 
 public class Goast extends Unit {
 	int power;
-	String name = "Goast";
+	String name;
 	
 	public Goast(int pos, int hp, int max, boolean isEnemy) {
 		super(pos, hp, max, isEnemy);
+		this.name  = "Goast";
 	}
 	
 	@Override

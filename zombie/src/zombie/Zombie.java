@@ -2,10 +2,11 @@ package zombie;
 
 public class Zombie extends Unit {
 	int power;
-	String name = "Zombie";
+	String name;
 	
 	public Zombie(int pos, int hp, int max, boolean isEnemy) {
 		super(pos, hp, max, isEnemy);
+		this.name  = "Zombie";
 	}
 	
 	@Override
