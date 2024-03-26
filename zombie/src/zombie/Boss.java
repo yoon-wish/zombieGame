@@ -15,11 +15,12 @@ public class Boss extends Zombie {
 		return shield;
 	}
 
-	public Boss(int pos, int hp, int max, int shield, boolean isEnemy) {
-		super(pos, hp, max, isEnemy);
+	public Boss(String name, int pos, int hp, int max, int shield, boolean isEnemy) {
+		super("Boss", pos, hp, max, isEnemy);
 		this.shield = shield;
 	}
 	
+	@Override
 	public void attack(Unit hero) {
 		int a = r.nextInt(4) + 1;
 		int power = r.nextInt(getMax())+ 1;
