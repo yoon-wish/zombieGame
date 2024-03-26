@@ -42,19 +42,19 @@ public class Game {
 
 			int heroPos = hero.getPos();
 			if (heroPos == goast.getPos()) {
-				while (!checkWin(goast)) {
+				while (checkWin(goast)) {
 					meetMonster(goast);
 				}
 			} else if (heroPos == zombie.getPos())
-				while (!checkWin(zombie)) {
+				while (checkWin(zombie)) {
 					meetMonster(zombie);
 				}
 			else if (heroPos == dracula.getPos())
-				while (!checkWin(dracula)) {
+				while (checkWin(dracula)) {
 					meetMonster(dracula);
 				}
 			else if (heroPos == boss.getPos()) {
-				while (!checkWin(boss)) {
+				while (checkWin(boss)) {
 					meetMonster(boss);
 				}
 			}
@@ -79,13 +79,13 @@ public class Game {
 			hero.recovery();
 		}
 
-//		checkWin(unit);
 	}
 
 	private boolean checkWin(Unit unit) {
 		if (hero.getHp() <= 0) {
-			System.out.println("Hero가 죽었습니다. 배틀에서 패배하였습니다.");
+			System.err.println("Hero가 죽었습니다. 배틀에서 패배하였습니다.");
 			isRun = false;
+			return false;
 		}
 
 		if (unit.getHp() <= 0) {
@@ -93,12 +93,13 @@ public class Game {
 			if (unit.getName().equals("Boss")) {
 				System.out.println(" 게임에서 승리했습니다. 종료합니다.");
 				isRun = false;
+				return false;
 			} else {
 				System.out.println(" 이동할 수 있습니다.");
-				return true;
+				return false;
 			}
 		}
-		return false;
+		return true;
 	}
 
 	public void run() {
