@@ -1,18 +1,28 @@
 package zombie;
 
+import java.util.Random;
+
 abstract public class Unit {
+	private String name;
 	private int pos;
 	private int hp;
 	private int max;
 	private boolean isEnemy;
+	Random r;
 	
-	public Unit(int pos, int hp, int max, boolean isEnemy) {
+	public Unit(String name, int pos, int hp, int max, boolean isEnemy) {
+		this.name = name;
 		this.pos = pos;
 		this.hp = hp;
 		this.max = max;
 		this.isEnemy = isEnemy;	// 몬스터 여부
+		r = new Random();
 	}
 
+	public String getName() {
+		return this.name;
+	}
+	
 	public boolean IsEnemy() {
 		return isEnemy;
 	}
@@ -33,7 +43,7 @@ abstract public class Unit {
 		this.hp = hp;
 	}
 	
-	public int getManx() {
+	public int getMax() {
 		return this.max;
 	}
 	

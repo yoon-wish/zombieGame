@@ -4,8 +4,8 @@ public class Goast extends Unit {
 	int power;
 	String name;
 	
-	public Goast(int pos, int hp, int max, boolean isEnemy) {
-		super(pos, hp, max, isEnemy);
+	public Goast(String name, int pos, int hp, int max, boolean isEnemy) {
+		super(name, pos, hp, max, isEnemy);
 		this.name  = "Goast";
 	}
 	

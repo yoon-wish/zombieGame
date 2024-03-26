@@ -4,9 +4,8 @@ public class Zombie extends Unit {
 	int power;
 	String name;
 	
-	public Zombie(int pos, int hp, int max, boolean isEnemy) {
-		super(pos, hp, max, isEnemy);
-		this.name  = "Zombie";
+	public Zombie(String name, int pos, int hp, int max, boolean isEnemy) {
+		super(name, pos, hp, max, isEnemy);
 	}
 	
 	public String getName() {

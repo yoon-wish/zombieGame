@@ -4,13 +4,9 @@ public class Dracula extends Unit {
 	int power;
 	String name;
 	
-	public Dracula(int pos, int hp, int max, boolean isEnemy) {
-		super(pos, hp, max, isEnemy);
+	public Dracula(String name, int pos, int hp, int max, boolean isEnemy) {
+		super(name, pos, hp, max, isEnemy);
 		this.name = "Dracula";
-	}
-	
-	public String getName() {
-		return this.name;
 	}
 	
 	@Override
