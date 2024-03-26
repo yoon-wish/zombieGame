@@ -2,9 +2,11 @@ package zombie;
 
 class Hero extends Unit implements Recovery{
 	int power;
+	int count;
 	
-	public Hero(int pos, int hp, int max, boolean isEnemy) {
+	public Hero(int pos, int hp, int max, int count, boolean isEnemy) {
 		super(pos, hp, max, isEnemy);
+		this.count = count;
 	}
 	
 	@Override
@@ -38,7 +40,7 @@ class Hero extends Unit implements Recovery{
 	}
 
 	@Override
-	public void recovery(int count) {
+	public void recovery() {
 		if(count > 0) {
 			setHp(getHp() + 100);
 			System.out.println("체력 회복해서" + getHp() +"이 되었습니다.");
