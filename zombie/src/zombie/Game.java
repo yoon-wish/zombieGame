@@ -43,30 +43,12 @@ public class Game {
 
 			int heroPos = hero.getPos();
 			if (heroPos == goast.getPos()) {
-				meetMonster(goast);
-				while (checkWin(goast)) {
-					battleMonster(goast);
-					if(randomNum() == 0) {
-						goast.hitable(hero);
-					}
-				}
+				runGame(goast);
 			} else if (heroPos == zombie.getPos()) {
-				meetMonster(zombie);
-				while (checkWin(zombie)) {
-					battleMonster(zombie);
-					if(randomNum() == 0) {
-						zombie.hitable(hero);
-					}
-				}
-			}else if (heroPos == dracula.getPos()) {
-				meetMonster(dracula);
-				while (checkWin(dracula)) {
-					battleMonster(dracula);
-					if(randomNum() == 0) {
-						dracula.hitable(hero);
-					}
-				}
-			}else if (heroPos == boss.getPos()) {
+				runGame(zombie);
+			} else if (heroPos == dracula.getPos()) {
+				runGame(dracula);
+			} else if (heroPos == boss.getPos()) {
 				while (checkWin(boss)) {
 					meetMonster(boss);
 				}
@@ -76,6 +58,36 @@ public class Game {
 		}
 	}
 
+	private void runGame(Unit unit) {
+		meetMonster(unit);
+		while (checkWin(unit)) {
+			battleMonster(unit);
+			if (randomNum() == 0) {
+				Unit monster = findUnit(unit);
+				if (monster == goast)
+					goast.hitable(hero);
+				else if (monster == dracula)
+					dracula.hitable(hero);
+				else if (monster == zombie)
+					zombie.hitable(hero);
+			}
+
+		}
+
+	}
+
+	private Unit findUnit(Unit unit) {
+
+		if (unit.getName().equals("Goast"))
+			return goast;
+		else if (unit.getName().equals("Zombie"))
+			return zombie;
+		else if (unit.getName().equals("Dracula"))
+			return dracula;
+
+		return unit;
+	}
+
 	private void meetMonster(Unit unit) {
 		System.out.printf("%s를 만났습니다. 공격모드로 바뀝니다.\n", unit.getName());
 	}
@@ -83,7 +95,7 @@ public class Game {
 	private void battleMonster(Unit unit) {
 		System.out.print("공격하기(1), 포션마시기(2)");
 		int sel = sc.nextInt();
-		
+
 		if (sel == 1) {
 			unit.attack(hero);
 			hero.attack(unit);
@@ -92,7 +104,7 @@ public class Game {
 		}
 
 	}
-	
+
 	private int randomNum() {
 		return rand.nextInt(5);
 	}
