@@ -18,11 +18,13 @@
 #### 히어로
 - Hp를 100 회복시켜주는 ***물약***을 보유하고 있다.<br>
 - 죽거나 모든 몬스터를 물리치면 게임이 끝난다.<br>
-
+<br>
+<br>
 > Class Diagram (UML)
 
 ![diagram](images/diagram_black.jpg)
-
+<br>
+<br>
 > Demo
 
 ![diagram]()
