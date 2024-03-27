@@ -64,9 +64,7 @@ public class Game {
 			battleMonster(unit);
 			if (randomNum() == 0) {
 				Unit monster = findUnit(unit);
-				if (monster == goast)
-					goast.hit(hero);
-				else if (monster == dracula)
+				if (monster == dracula)
 					dracula.hit(hero);
 				else if (monster == zombie)
 					zombie.hit(hero);
@@ -77,10 +75,7 @@ public class Game {
 	}
 
 	private Unit findUnit(Unit unit) {
-
-		if (unit.getName().equals("Goast"))
-			return goast;
-		else if (unit.getName().equals("Zombie"))
+		if (unit.getName().equals("Zombie"))
 			return zombie;
 		else if (unit.getName().equals("Dracula"))
 			return dracula;
