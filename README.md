@@ -6,7 +6,7 @@
 
 > Class Diagram (UML)
 
-![diagram](images./zombieGame_Diagram.jpg)
+![diagram](images/zombieGame_Diagram.jpg)
 
 > Demo
 
