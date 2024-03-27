@@ -9,7 +9,7 @@ public class Goast extends Unit{
 
 	@Override
 	public void attack(Unit hero) {
-		power = (r.nextInt(this.getMax()) + 1) / 2;
+		power = (r.nextInt(this.getMax()) + 2) / 2;
 
 		hero.setHp(hero.getHp() - power);
 		if (hero.getHp() <= 0)
