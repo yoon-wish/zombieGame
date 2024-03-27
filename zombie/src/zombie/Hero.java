@@ -29,12 +29,14 @@ class Hero extends Unit implements recoverable{
 			if(boss.getHp() <= 0 )
 				boss.setHp(0);
 			
-			System.out.printf("히어로가 %d의 공격력으로 공격\n현재 Boss의 hp: %d 현재 Boss의 Shield: %d\n", power, boss.getHp(), boss.getShield());
+			System.out.printf("[★Hero]가 %d의 공격력으로 공격\n♥ 현재 Boss의 hp: %d 현재 Boss의 Shield: %d\n", power, boss.getHp(), boss.getShield());
 		} else {
 			power = r.nextInt(getMax()) + 1;
 			enemy.setHp(enemy.getHp() - power);
 			if(enemy.getHp()<=0)
 				enemy.setHp(0);
+			
+			System.out.printf("[★히어로]가 %d의 공격력으로 공격\n♡ 현재 %s의 hp: %d\n", power, enemy.getName(), enemy.getHp());
 		}
 	}
 
@@ -45,7 +47,7 @@ class Hero extends Unit implements recoverable{
 				setHp(this.MAX_HP);
 			else
 				setHp(getHp() + 100);
-			System.out.println("체력 회복해서" + getHp() +"이 되었습니다.");
+			System.out.println("** 체력 회복으로 Hp가 " + getHp() +"이 되었습니다.");
 			count -= 1;
 		} else if(count == 0) {
 			System.out.println("모두 사용했습니다.");

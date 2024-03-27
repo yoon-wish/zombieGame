@@ -20,7 +20,7 @@ public class Goast extends Unit{
 		else
 			setHp(getHp() + power / 2);
 
-		System.out.printf("[%s]가 %d의 공격력으로 공격\n현재 [Hero] hp: %d, [%s] 체력 회복 %d\n", this.getName(), power, hero.getHp(),
+		System.out.printf("\n[%s]가 %d의 공격력으로 공격\n♥ 현재 [★히어로] hp: %d, [%s] 체력 회복 %d\n", this.getName(), power, hero.getHp(),
 				this.getName(), this.getHp());
 	}
 	

@@ -20,7 +20,7 @@ public class Dracula extends Unit implements Hitable{
 		else
 			setHp(getHp() + power / 2);
 
-		System.out.printf("[%s]가 %d의 공격력으로 공격\n현재 [Hero] hp: %d, [%s] 체력 회복 %d\n", this.getName(), power, hero.getHp(),
+		System.out.printf("\n[%s]가 %d의 공격력으로 공격\n♥ 현재 [★히어로] hp: %d, [%s] 체력 회복 %d\n", this.getName(), power, hero.getHp(),
 				this.getName(), this.getHp());
 	}
 	
@@ -32,8 +32,8 @@ public class Dracula extends Unit implements Hitable{
 		if(hero.getHp() <= 0)
 			hero.setHp(0);
 		
-		System.err.printf("[%s]가 %d의 공격력으로 추가공격!\n너무 빨라서 피할 수 없었다.\n", this.getName(), power);
-		System.out.printf("현재 [Hero] hp: %d\n", hero.getHp());
+		System.err.printf("\n[%s]가 %d의 공격력으로 추가공격!\n너무 빨라서 피할 수 없었다.\n", this.getName(), power);
+		System.out.printf("♥ 현재 [★히어로] hp: %d\n", hero.getHp());
 	}
 	
 }

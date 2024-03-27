@@ -32,7 +32,7 @@ public class Game {
 	}
 
 	private void move() {
-		System.out.println("현재 위치 = " + pos);
+		System.out.println("[Hero] 위치 = " + pos);
 		System.out.print("앞으로 이동하기(1), 종료하기(2) : ");
 
 		int move = sc.nextInt();
@@ -85,11 +85,11 @@ public class Game {
 	}
 
 	private void meetMonster(Unit unit) {
-		System.out.printf("%s를 만났습니다. 공격모드로 바뀝니다.\n", unit.getName());
+		System.out.printf("▶ %s를 만났습니다. 공격모드로 바뀝니다.\n", unit.getName());
 	}
 
 	private void battleMonster(Unit unit) {
-		System.out.print("공격하기(1), 포션마시기(2)");
+		System.out.print("\n공격하기(1), 포션마시기(2) : ");
 		int sel = sc.nextInt();
 
 		if (sel == 1) {
@@ -113,13 +113,13 @@ public class Game {
 		}
 
 		if (unit.getHp() <= 0) {
-			System.out.printf("%s를 이겼습니다.", unit.getName());
+			System.out.printf("\n** %s를 이겼습니다.", unit.getName());
 			if (unit.getName().equals("Boss")) {
-				System.out.println(" 게임에서 승리했습니다. 종료합니다.");
+				System.out.println(" 게임에서 승리했습니다 **\n종료합니다.");
 				isRun = false;
 				return false;
 			} else {
-				System.out.println(" 이동할 수 있습니다.");
+				System.out.println(" 이동할 수 있습니다 **\n");
 				return false;
 			}
 		}
