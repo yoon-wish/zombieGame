@@ -36,5 +36,4 @@ public class Dracula extends Unit implements RandomHit{
 		System.out.printf("현재 [Hero] hp: %d\n", hero.getHp());
 	}
 	
-	
 }
