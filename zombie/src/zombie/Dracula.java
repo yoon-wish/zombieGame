@@ -1,6 +1,6 @@
 package zombie;
 
-public class Dracula extends Unit implements RandomHit{
+public class Dracula extends Unit implements Hitable{
 	int power;
 
 	public Dracula(String name, int pos, int hp, int max, boolean isEnemy) {
@@ -25,7 +25,7 @@ public class Dracula extends Unit implements RandomHit{
 	}
 	
 	@Override
-	public void hitable(Unit hero) {
+	public void hit(Unit hero) {
 		power = r.nextInt(3) + 1;	// 1 ~ 3 추가공격
 		
 		hero.setHp(hero.getHp() - power);

@@ -65,11 +65,11 @@ public class Game {
 			if (randomNum() == 0) {
 				Unit monster = findUnit(unit);
 				if (monster == goast)
-					goast.hitable(hero);
+					goast.hit(hero);
 				else if (monster == dracula)
-					dracula.hitable(hero);
+					dracula.hit(hero);
 				else if (monster == zombie)
-					zombie.hitable(hero);
+					zombie.hit(hero);
 			}
 
 		}
@@ -100,7 +100,7 @@ public class Game {
 			unit.attack(hero);
 			hero.attack(unit);
 		} else if (sel == 2) {
-			hero.recoverable();
+			hero.recover();
 		}
 
 	}
