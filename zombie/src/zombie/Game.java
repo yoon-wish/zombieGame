@@ -1,9 +1,11 @@
 package zombie;
 
+import java.util.Random;
 import java.util.Scanner;
 
 public class Game {
 	private Scanner sc = new Scanner(System.in);
+	private Random rand = new Random();
 	private int pos;
 	private boolean isRun;
 
@@ -15,7 +17,6 @@ public class Game {
 
 	private Game() {
 		setGame();
-		System.out.println(goast.getName());
 	}
 
 	private static Game instance = new Game();
@@ -42,18 +43,30 @@ public class Game {
 
 			int heroPos = hero.getPos();
 			if (heroPos == goast.getPos()) {
+				meetMonster(goast);
 				while (checkWin(goast)) {
-					meetMonster(goast);
+					battleMonster(goast);
+					if(randomNum() == 0) {
+						goast.hitable(hero);
+					}
 				}
-			} else if (heroPos == zombie.getPos())
+			} else if (heroPos == zombie.getPos()) {
+				meetMonster(zombie);
 				while (checkWin(zombie)) {
-					meetMonster(zombie);
+					battleMonster(zombie);
+					if(randomNum() == 0) {
+						zombie.hitable(hero);
+					}
 				}
-			else if (heroPos == dracula.getPos())
+			}else if (heroPos == dracula.getPos()) {
+				meetMonster(dracula);
 				while (checkWin(dracula)) {
-					meetMonster(dracula);
+					battleMonster(dracula);
+					if(randomNum() == 0) {
+						dracula.hitable(hero);
+					}
 				}
-			else if (heroPos == boss.getPos()) {
+			}else if (heroPos == boss.getPos()) {
 				while (checkWin(boss)) {
 					meetMonster(boss);
 				}
@@ -65,13 +78,12 @@ public class Game {
 
 	private void meetMonster(Unit unit) {
 		System.out.printf("%s를 만났습니다. 공격모드로 바뀝니다.\n", unit.getName());
-		battleMonster(unit);
 	}
 
 	private void battleMonster(Unit unit) {
 		System.out.print("공격하기(1), 포션마시기(2)");
 		int sel = sc.nextInt();
-
+		
 		if (sel == 1) {
 			unit.attack(hero);
 			hero.attack(unit);
@@ -79,6 +91,10 @@ public class Game {
 			hero.recoverable();
 		}
 
+	}
+	
+	private int randomNum() {
+		return rand.nextInt(5);
 	}
 
 	private boolean checkWin(Unit unit) {

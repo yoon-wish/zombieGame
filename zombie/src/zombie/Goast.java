@@ -32,7 +32,7 @@ public class Goast extends Unit implements RandomHit{
 		if(hero.getHp() <= 0)
 			hero.setHp(0);
 		
-		System.out.printf("[%s]가 %d의 공격력으로 추가공격!\n너무 빨라서 피할 수 없었다.\n", this.getName(), power);
+		System.err.printf("[%s]가 %d의 공격력으로 추가공격!\n너무 빨라서 피할 수 없었다.\n", this.getName(), power);
 		System.out.printf("현재 [Hero] hp: %d\n", hero.getHp());
 	}
 }
