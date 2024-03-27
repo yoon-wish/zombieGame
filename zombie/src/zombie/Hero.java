@@ -39,7 +39,7 @@ class Hero extends Unit implements Recovery{
 	}
 
 	@Override
-	public void recovery() {
+	public void recoverable() {
 		if(count > 0) {
 			if(getHp() + 100 > this.MAX_HP)
 				setHp(this.MAX_HP);
