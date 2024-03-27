@@ -76,7 +76,7 @@ public class Game {
 			unit.attack(hero);
 			hero.attack(unit);
 		} else if (sel == 2) {
-			hero.recovery();
+			hero.recoverable();
 		}
 
 	}
