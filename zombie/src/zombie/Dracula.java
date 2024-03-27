@@ -8,7 +8,7 @@ public class Dracula extends Unit {
 	}
 
 	@Override
-	void attack(Unit hero) {
+	public void attack(Unit hero) {
 		power = (r.nextInt(this.getMax()) + 1) / 2;
 
 		hero.setHp(hero.getHp() - power);

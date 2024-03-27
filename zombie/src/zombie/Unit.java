@@ -9,7 +9,7 @@ abstract public class Unit {
 	private int hp;
 	private int max;
 	private boolean isEnemy;
-	Random r;
+	public Random r;
 	
 	public Unit(String name, int pos, int hp, int max, boolean isEnemy) {
 		this.name = name;
@@ -56,5 +56,5 @@ abstract public class Unit {
 		}
 	}
 	
-	abstract void attack(Unit unit);
+	public abstract void attack(Unit unit);
 }
