@@ -49,12 +49,12 @@ abstract public class Unit {
 		return this.max;
 	}
 	
-	public void move() {
-		if(this.pos <= 10) {
-			this.pos ++;
-			System.out.println("오른쪽으로 이동. 현재 위치는 " + pos);
-		}
-	}
+//	public void move() {
+//		if(this.pos <= 10) {
+//			this.pos ++;
+//			System.out.println("오른쪽으로 이동. 현재 위치는 " + pos);
+//		}
+//	}
 	
 	public abstract void attack(Unit unit);
 }
