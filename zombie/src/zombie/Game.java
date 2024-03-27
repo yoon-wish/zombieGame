@@ -49,8 +49,9 @@ public class Game {
 			} else if (heroPos == dracula.getPos()) {
 				runGame(dracula);
 			} else if (heroPos == boss.getPos()) {
+				meetMonster(boss);
 				while (checkWin(boss)) {
-					meetMonster(boss);
+					battleMonster(boss);
 				}
 			}
 		} else if (move == 2) {
