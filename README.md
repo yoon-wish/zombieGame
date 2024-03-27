@@ -27,4 +27,4 @@
 <br>
 > Demo
 
-![diagram]()
+![diagram](images/zombieGame_demo.gif)
