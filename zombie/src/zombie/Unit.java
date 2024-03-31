@@ -7,6 +7,7 @@ abstract public class Unit {
 	private String name;
 	private int pos;
 	private int hp;
+	private int[] hpBar;
 	private int max;
 	private boolean isEnemy;
 	public Random r;
@@ -18,6 +19,7 @@ abstract public class Unit {
 			this.name = name;
 		this.pos = pos;
 		this.hp = hp;
+		this.hpBar = new int[hp/10];
 		this.max = max;
 		this.MAX_HP = hp;
 		this.isEnemy = isEnemy; // 몬스터 여부
