@@ -14,10 +14,10 @@ public class Game {
 	private int[] map;
 	
 	Hero hero = null;
-	Goast goast = new Goast("Goast", 5, 70, 6, true);
-	Zombie zombie = new Zombie("Zombie", 6, 80, 7, true);
-	Dracula dracula = new Dracula("Dracula", 7, 90, 8, true);
-	Boss boss = new Boss("Boss", 9, 200, 15, 100, true);
+	Beginner goast = new Beginner("Goast", 5, 70, 6, true);
+	Intermediate zombie = new Intermediate("Zombie", 6, 80, 7, true);
+	Advanced dracula = new Advanced("Dracula", 7, 90, 8, true);
+	Legendary boss = new Legendary("Boss", 9, 200, 15, 100, true);
 	
 	private Game() {
 		setGame();
@@ -70,8 +70,10 @@ public class Game {
 		int move = sc.nextInt();
 
 		if (move == 1) {
+			map[pos] = 0;
 			pos = pos + 1;
 			hero.setPos(pos);
+			map[pos] = HERO_POS;
 
 			int heroPos = hero.getPos();
 			if (heroPos == goast.getPos()) {

@@ -19,8 +19,8 @@ class Hero extends Unit implements recoverable{
 	
 	@Override
 	public void attack(Unit enemy) {
-		if(enemy instanceof Boss) {	// 적이 보스일 때
-			Boss boss = (Boss) enemy;
+		if(enemy instanceof Legendary) {	// 적이 보스일 때
+			Legendary boss = (Legendary) enemy;
 			power = r.nextInt(getMax()) + 1;
 			
 			if(boss.getShield() > 0) { // 실드가 존재하면
