@@ -51,6 +51,7 @@ class Hero extends Unit implements recoverable{
 			System.out.printf("[%s]가 %d의 공격력으로 공격\n", this.getName(), power);
 			super.printHp(this);
 			super.printHp(enemy);
+			System.out.println();
 		}
 	}
 
@@ -61,7 +62,8 @@ class Hero extends Unit implements recoverable{
 				setHp(this.MAX_HP);
 			else
 				setHp(getHp() + 100);
-			System.out.println("** 체력 회복으로 Hp가 " + getHp() +"이 되었습니다.");
+			System.out.println("체력 회복");
+			super.printHp(this);
 			count -= 1;
 		} else if(count == 0) {
 			System.out.println("모두 사용했습니다.");
