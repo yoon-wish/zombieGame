@@ -20,8 +20,10 @@ public class Advanced extends Unit implements Hitable{
 		else
 			setHp(getHp() + power / 2);
 
-		System.out.printf("\n[%s]가 %d의 공격력으로 공격\n♥ 현재 [★히어로] hp: %d, [%s] 체력 회복 %d\n", this.getName(), power, hero.getHp(),
-				this.getName(), this.getHp());
+		System.out.printf("\n[%s]가 %d의 공격력으로 공격\n", this.getName(), power);
+		if (power / 2 > 0) {
+			System.out.printf("✧ :-흡혈-: ✧\n[%s] %d만큼 체력 회복\n", this.getName(), power / 2);
+		}
 	}
 	
 	@Override
@@ -33,7 +35,7 @@ public class Advanced extends Unit implements Hitable{
 			hero.setHp(0);
 		
 		System.err.printf("\n[%s]가 %d의 공격력으로 추가공격!\n너무 빨라서 피할 수 없었다.\n", this.getName(), power);
-		System.out.printf("♥ 현재 [★히어로] hp: %d\n", hero.getHp());
+		super.printHp(hero);
 	}
 	
 }
