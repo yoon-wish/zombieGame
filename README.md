@@ -34,7 +34,7 @@
 
 > Class Diagram (UML)
 
-![diagram](images/diagram_black.jpg)
+![diagram](images/zombieGame_UML.jpg)
 <br>
 <br>
 > Demo
