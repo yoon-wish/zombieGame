@@ -31,6 +31,14 @@ class Hero extends Unit implements recoverable{
 		this.shield += shield;
 	}
 	
+	public int getPotion() {
+		return this.potion;
+	}
+	
+	public void setPotion() {
+		this.potion ++;
+	}
+	
 	@Override
 	public void attack(Unit enemy) {
 		if(enemy instanceof Legendary) {	// 적이 보스일 때

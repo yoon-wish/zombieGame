@@ -37,6 +37,7 @@ public class Game {
 		setName();
 		hero.setPos(pos);
 		map[hero.getPos()] = HERO_POS;
+		pickPotion();
 	}
 
 	private void setName() {
@@ -95,7 +96,14 @@ public class Game {
 	}
 	
 	private void pickPotion() {
-		
+		int rNum = rand.nextInt(4);
+		if(rNum == 0) {
+			System.out.println("┌──────────────────────────────────────┐");
+			System.out.println("        *+:｡.｡ 포션 획득 ｡.｡:+*");
+			System.out.println("            보유 포션: " + hero.getPotion() + "개");
+			System.out.println("└──────────────────────────────────────┘");
+			hero.setPotion();
+		}
 	}
 
 	private void runGame(Unit unit) {
