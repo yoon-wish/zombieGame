@@ -4,17 +4,21 @@ import java.util.Random;
 import java.util.Scanner;
 
 public class Game {
+	private static int SIZE = 20;
+	private static int HERO_POS = 1;
+	
 	private Scanner sc = new Scanner(System.in);
 	private Random rand = new Random();
 	private int pos;
 	private boolean isRun;
-
+	private int[] map;
+	
 	Hero hero = null;
 	Goast goast = new Goast("Goast", 5, 70, 6, true);
 	Zombie zombie = new Zombie("Zombie", 6, 80, 7, true);
 	Dracula dracula = new Dracula("Dracula", 7, 90, 8, true);
 	Boss boss = new Boss("Boss", 9, 200, 15, 100, true);
-
+	
 	private Game() {
 		setGame();
 	}
@@ -26,12 +30,18 @@ public class Game {
 	}
 
 	private void setGame() {
-		pos = 1;
+		pos = 0;
 		isRun = true;
+		map = new int[SIZE];
 		start();
+		setName();
+		hero.setPos(pos);
+		map[hero.getPos()] = HERO_POS;
+	}
+	
+	private void setName() {
 		String name = inputHeroName();
 		hero = new Hero(name, 1, 200, 20, 3, false);
-		hero.setPos(pos);
 	}
 	
 	private void start() {
@@ -41,6 +51,16 @@ public class Game {
 	private String inputHeroName() {
 		System.out.print(">>> Hero Name: ");
 		return inputString();
+	}
+	
+	private void printMap() {
+		for(int i=0; i<SIZE; i++) {
+			System.out.printf("%2d", i+1);
+			if(map[i] == HERO_POS) {
+				System.out.println("├─🤴─┤");
+			} else
+				System.out.println("├────┤");
+		}
 	}
 
 	private void move() {
@@ -119,7 +139,7 @@ public class Game {
 
 	private boolean checkWin(Unit unit) {
 		if (hero.getHp() <= 0) {
-//			printDead();
+			printDead();
 			System.out.println("- The End -");
 			isRun = false;
 			return false;
@@ -139,7 +159,25 @@ public class Game {
 		return true;
 	}
 	
-
+	private void printDead() {
+		try {
+			System.out.println("하 아프다 ....");
+			Thread.sleep(600);
+			System.out.println("......");
+			Thread.sleep(600);
+			System.out.println("....");
+			Thread.sleep(600);
+			System.out.println("..");
+			Thread.sleep(600);
+			System.out.println("점점 고통이 희미해져 간다");
+			Thread.sleep(600);
+			System.out.println("......");
+			Thread.sleep(600);
+			System.err.printf("%s는 좀비가 되었다..!\n", hero.getName());
+			Thread.sleep(1000);
+		} catch (Exception e) {
+		}
+	}
 	
 	private String inputString() {
 		return sc.next();
@@ -147,6 +185,7 @@ public class Game {
 
 	public void run() {
 		while (isRun) {
+			printMap();
 			move();
 		}
 	}
