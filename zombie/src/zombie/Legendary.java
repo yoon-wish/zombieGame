@@ -26,7 +26,7 @@ public class Legendary extends Intermediate {
 		int power = r.nextInt(getMax())+ 1;
 		
 		if(a == 1) {
-			System.out.println("!!!! 보스의 필살기 발동 2배의 공격력 !!!!");
+			System.out.println("🚫보스의 필살기 발동 2배의 공격력🚫");
 			hero.setHp(hero.getHp() - (power * 2));
 			if(hero.getHp() <= 0)
 				hero.setHp(0);
@@ -37,5 +37,9 @@ public class Legendary extends Intermediate {
 				hero.setHp(0);
 		}
 		
-		System.out.printf("\n[%s]가 %d의 공격력으로 공격\n현재 [★히어로] hp: %d, [%s] 체력 회복 %d\n", this.getName(), power, hero.getHp(), this.getName(), this.getHp());	}
+		System.out.printf("\n[%s]가 %d의 공격력으로 공격\n", this.getName(), power);
+		if (power / 2 > 0) {
+			System.out.printf("✧ :-흡혈-: ✧\n[%s] %d만큼 체력 회복\n", this.getName(), power / 2);
+		}
+	}
 }
