@@ -9,7 +9,7 @@ public class Game {
 	private int pos;
 	private boolean isRun;
 
-	Hero hero = new Hero("Hero", 1, 200, 20, 3, false);
+	Hero hero = null;
 	Goast goast = new Goast("Goast", 5, 70, 6, true);
 	Zombie zombie = new Zombie("Zombie", 6, 80, 7, true);
 	Dracula dracula = new Dracula("Dracula", 7, 90, 8, true);
@@ -28,11 +28,23 @@ public class Game {
 	private void setGame() {
 		pos = 1;
 		isRun = true;
+		start();
+		String name = inputHeroName();
+		hero = new Hero(name, 1, 200, 20, 3, false);
 		hero.setPos(pos);
+	}
+	
+	private void start() {
+		System.out.println("⭒❃.✮:▹　 ZOMBIE GAME　◃:✮.❃⭒");		
+	}
+	
+	private String inputHeroName() {
+		System.out.print(">>> Hero Name: ");
+		return inputString();
 	}
 
 	private void move() {
-		System.out.println("[Hero] 위치 = " + pos);
+		System.out.printf("[%s] 위치 = %d\n", hero.getName(), pos);
 		System.out.print("앞으로 이동하기(1), 종료하기(2) : ");
 
 		int move = sc.nextInt();
@@ -107,7 +119,8 @@ public class Game {
 
 	private boolean checkWin(Unit unit) {
 		if (hero.getHp() <= 0) {
-			System.err.println("Hero가 죽었습니다. 배틀에서 패배하였습니다.");
+			printDead();
+			System.out.println("- The End -");
 			isRun = false;
 			return false;
 		}
@@ -124,6 +137,30 @@ public class Game {
 			}
 		}
 		return true;
+	}
+	
+	private void printDead() {
+		try {
+			System.out.println("하 아프다 ....");
+			Thread.sleep(600);
+			System.out.println("......");
+			Thread.sleep(600);
+			System.out.println("....");
+			Thread.sleep(600);
+			System.out.println("..");
+			Thread.sleep(600);
+			System.out.println("점점 고통이 희미해져 간다");
+			Thread.sleep(600);
+			System.out.println("......");
+			Thread.sleep(600);
+			System.err.printf("%s는 좀비가 되었다..!\n", hero.getName());
+			Thread.sleep(1000);
+		} catch (Exception e) {
+		}
+	}
+	
+	private String inputString() {
+		return sc.next();
 	}
 
 	public void run() {

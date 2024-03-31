@@ -5,8 +5,12 @@ class Hero extends Unit implements recoverable{
 	int count;
 	
 	public Hero(String name, int pos, int hp, int max, int count, boolean isEnemy) {
-		super("Hero", pos, hp, max, isEnemy);
+		super(name, pos, hp, max, isEnemy);
 		this.count = count;
+	}
+	
+	public String getName() {
+		return super.getName();
 	}
 	
 	@Override
@@ -29,14 +33,14 @@ class Hero extends Unit implements recoverable{
 			if(boss.getHp() <= 0 )
 				boss.setHp(0);
 			
-			System.out.printf("[★Hero]가 %d의 공격력으로 공격\n♥ 현재 Boss의 hp: %d 현재 Boss의 Shield: %d\n", power, boss.getHp(), boss.getShield());
+			System.out.printf("[%s]가 %d의 공격력으로 공격\n♥ 현재 Boss의 hp: %d 현재 Boss의 Shield: %d\n", this.getName(), power, boss.getHp(), boss.getShield());
 		} else {
 			power = r.nextInt(getMax()) + 1;
 			enemy.setHp(enemy.getHp() - power);
 			if(enemy.getHp()<=0)
 				enemy.setHp(0);
 			
-			System.out.printf("[★히어로]가 %d의 공격력으로 공격\n♡ 현재 %s의 hp: %d\n", power, enemy.getName(), enemy.getHp());
+			System.out.printf("[%s]가 %d의 공격력으로 공격\n♡ 현재 %s의 hp: %d\n", this.getName(), power, enemy.getName(), enemy.getHp());
 		}
 	}
 
