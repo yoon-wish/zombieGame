@@ -13,6 +13,10 @@ class Hero extends Unit implements recoverable{
 		return super.getName();
 	}
 	
+	public int getPos() {
+		return super.getPos();
+	}
+	
 	@Override
 	public void attack(Unit enemy) {
 		if(enemy instanceof Boss) {	// 적이 보스일 때
