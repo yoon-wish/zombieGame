@@ -119,7 +119,7 @@ public class Game {
 
 	private boolean checkWin(Unit unit) {
 		if (hero.getHp() <= 0) {
-			printDead();
+//			printDead();
 			System.out.println("- The End -");
 			isRun = false;
 			return false;
@@ -139,25 +139,7 @@ public class Game {
 		return true;
 	}
 	
-	private void printDead() {
-		try {
-			System.out.println("하 아프다 ....");
-			Thread.sleep(600);
-			System.out.println("......");
-			Thread.sleep(600);
-			System.out.println("....");
-			Thread.sleep(600);
-			System.out.println("..");
-			Thread.sleep(600);
-			System.out.println("점점 고통이 희미해져 간다");
-			Thread.sleep(600);
-			System.out.println("......");
-			Thread.sleep(600);
-			System.err.printf("%s는 좀비가 되었다..!\n", hero.getName());
-			Thread.sleep(1000);
-		} catch (Exception e) {
-		}
-	}
+
 	
 	private String inputString() {
 		return sc.next();
