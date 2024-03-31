@@ -1,6 +1,6 @@
 package zombie;
 
-public class Beginner extends Unit{
+public class Beginner extends Unit {
 	int power;
 
 	public Beginner(String name, int pos, int hp, int max, boolean isEnemy) {
@@ -15,13 +15,16 @@ public class Beginner extends Unit{
 		if (hero.getHp() <= 0)
 			hero.setHp(0);
 
-		if (getHp() + power / 2 > this.MAX_HP)
+		// 흡혈
+		if (getHp() + (power / 2) > this.MAX_HP)
 			setHp(this.MAX_HP);
 		else
-			setHp(getHp() + power / 2);
+			setHp(getHp() + (power / 2));
 
-		System.out.printf("\n[%s]가 %d의 공격력으로 공격\n♥ 현재 [★히어로] hp: %d, [%s] 체력 회복 %d\n", this.getName(), power, hero.getHp(),
-				this.getName(), this.getHp());
+		System.out.printf("\n[%s]가 %d의 공격력으로 공격\n", this.getName(), power);
+		if (power / 2 > 0) {
+			System.out.printf("✧ :-흡혈-: ✧\n[%s] %d만큼 체력 회복\n", this.getName(), power / 2);
+		}
 	}
-	
+
 }

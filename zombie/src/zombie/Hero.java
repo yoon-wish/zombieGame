@@ -17,6 +17,9 @@ class Hero extends Unit implements recoverable{
 		return super.getPos();
 	}
 	
+	public void getPrintHp() {
+	}
+	
 	@Override
 	public void attack(Unit enemy) {
 		if(enemy instanceof Legendary) {	// 적이 보스일 때
@@ -41,10 +44,13 @@ class Hero extends Unit implements recoverable{
 		} else {
 			power = r.nextInt(getMax()) + 1;
 			enemy.setHp(enemy.getHp() - power);
-			if(enemy.getHp()<=0)
+			if(enemy.getHp()<=0) {
 				enemy.setHp(0);
+			}
 			
-			System.out.printf("[%s]가 %d의 공격력으로 공격\n♡ 현재 %s의 hp: %d\n", this.getName(), power, enemy.getName(), enemy.getHp());
+			System.out.printf("[%s]가 %d의 공격력으로 공격\n", this.getName(), power);
+			super.printHp(this);
+			super.printHp(enemy);
 		}
 	}
 
