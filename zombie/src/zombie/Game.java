@@ -14,10 +14,10 @@ public class Game {
 	private int[] map;
 	
 	Hero hero = null;
-	Beginner goast = new Beginner("Goast", 5, 70, 6, true);
-	Intermediate zombie = new Intermediate("Zombie", 6, 80, 7, true);
-	Advanced dracula = new Advanced("Dracula", 7, 90, 8, true);
-	Legendary boss = new Legendary("Boss", 9, 200, 15, 100, true);
+	Beginner biginner = new Beginner("Beginner", 5, 70, 6, true);
+	Intermediate intermediate = new Intermediate("Intermediate", 6, 80, 7, true);
+	Advanced advenced = new Advanced("Advanced", 7, 90, 8, true);
+	Legendary legendary = new Legendary("Legendary", 9, 200, 15, 100, true);
 	
 	private Game() {
 		setGame();
@@ -76,16 +76,16 @@ public class Game {
 			map[pos] = HERO_POS;
 
 			int heroPos = hero.getPos();
-			if (heroPos == goast.getPos()) {
-				runGame(goast);
-			} else if (heroPos == zombie.getPos()) {
-				runGame(zombie);
-			} else if (heroPos == dracula.getPos()) {
-				runGame(dracula);
-			} else if (heroPos == boss.getPos()) {
-				meetMonster(boss);
-				while (checkWin(boss)) {
-					battleMonster(boss);
+			if (heroPos == biginner.getPos()) {
+				runGame(biginner);
+			} else if (heroPos == intermediate.getPos()) {
+				runGame(intermediate);
+			} else if (heroPos == advenced.getPos()) {
+				runGame(advenced);
+			} else if (heroPos == legendary.getPos()) {
+				meetMonster(legendary);
+				while (checkWin(legendary)) {
+					battleMonster(legendary);
 				}
 			}
 		} else if (move == 2) {
@@ -99,10 +99,10 @@ public class Game {
 			battleMonster(unit);
 			if (randomNum() == 0) {
 				Unit monster = findUnit(unit);
-				if (monster == dracula)
-					dracula.hit(hero);
-				else if (monster == zombie)
-					zombie.hit(hero);
+				if (monster == advenced)
+					advenced.hit(hero);
+				else if (monster == intermediate)
+					intermediate.hit(hero);
 			}
 
 		}
@@ -111,15 +111,15 @@ public class Game {
 
 	private Unit findUnit(Unit unit) {
 		if (unit.getName().equals("Zombie"))
-			return zombie;
+			return intermediate;
 		else if (unit.getName().equals("Dracula"))
-			return dracula;
+			return advenced;
 
 		return unit;
 	}
 
 	private void meetMonster(Unit unit) {
-		System.out.printf("▶ %s를 만났습니다. 공격모드로 바뀝니다.\n", unit.getName());
+		System.out.printf("▶ %s를 만났습니다.\n공격모드로 바뀝니다.\n", unit.getName());
 	}
 
 	private void battleMonster(Unit unit) {
