@@ -11,17 +11,11 @@ public class Intermediate extends Unit implements Hitable {
 	public void attack(Unit hero) {
 		power = (rand.nextInt(this.getMax()) + 2) / 2;
 
-		hero.setHp(hero.getHp() - power);
-		if (hero.getHp() <= 0)
-			hero.setHp(0);
-
-		if (getHp() + power / 2 > this.MAX_HP)
-			setHp(this.MAX_HP);
-		else
-			setHp(getHp() + power / 2);
+		super.attackHero(hero, this.power);
 
 		System.out.printf("\n[%s]가 %d의 공격력으로 공격\n", this.getName(), power);
 		if (power / 2 > 0) {
+			this.setHp(this.getHp() + (power / 2));
 			System.out.printf("✧ :-흡혈-: ✧\n[%s] %d만큼 체력 회복\n", this.getName(), power / 2);
 		}
 	}
@@ -34,7 +28,10 @@ public class Intermediate extends Unit implements Hitable {
 		if(hero.getHp() <= 0)
 			hero.setHp(0);
 		
-		System.err.printf("\n[%s]가 %d의 공격력으로 추가공격!\n너무 빨라서 피할 수 없었다.\n", this.getName(), power);
+		System.out.println("┌─────────────────────────────────────────────────────┐");
+		System.out.printf("  [%s]가 %d의 공격력으로 뒷통수 가격!\n", this.getName(), power);
+		System.out.println("              너무 빨라서 피할 수 없었다.");
+		System.out.println("└─────────────────────────────────────────────────────┘\n");
 		super.printHp(hero);
 	}
 }

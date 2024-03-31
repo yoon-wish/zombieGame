@@ -37,7 +37,7 @@ public class Game {
 		setName();
 		hero.setPos(pos);
 		map[hero.getPos()] = HERO_POS;
-		pickPotion();
+		pickShield();
 	}
 
 	private void setName() {
@@ -55,8 +55,8 @@ public class Game {
 	}
 
 	private void printMap() {
-		for (int i = SIZE-1; i >= 0; i--) {
-			System.out.printf("%2d", i+1);
+		for (int i = SIZE - 1; i >= 0; i--) {
+			System.out.printf("%2d", i + 1);
 			if (map[i] == HERO_POS) {
 				System.out.println("├─🤴─┤");
 			} else
@@ -70,12 +70,14 @@ public class Game {
 		int move = sc.nextInt();
 		System.out.println("└──────────────────────────────────────┘");
 
-
 		if (move == 1) {
 			map[pos] = 0;
 			pos = pos - 1;
 			hero.setPos(pos);
 			map[pos] = HERO_POS;
+
+			pickPotion();
+			pickShield();
 
 			int heroPos = hero.getPos();
 			if (heroPos == biginner.getPos()) {
@@ -94,15 +96,26 @@ public class Game {
 			isRun = false;
 		}
 	}
-	
+
 	private void pickPotion() {
-		int rNum = rand.nextInt(4);
-		if(rNum == 0) {
+		int rNum = rand.nextInt(7);
+		if (rNum == 0) {
+			hero.setPotion();
 			System.out.println("┌──────────────────────────────────────┐");
 			System.out.println("        *+:｡.｡ 포션 획득 ｡.｡:+*");
 			System.out.println("            보유 포션: " + hero.getPotion() + "개");
 			System.out.println("└──────────────────────────────────────┘");
-			hero.setPotion();
+		}
+	}
+
+	private void pickShield() {
+		int rNum = rand.nextInt(10);
+		if (rNum == 0) {
+			hero.setShield();
+			System.out.println("┌──────────────────────────────────────┐");
+			System.out.println("        *+:｡.｡ 실드 획득 ｡.｡:+*");
+			System.out.println("            현재 실드: " + hero.getShield());
+			System.out.println("└──────────────────────────────────────┘");
 		}
 	}
 
@@ -123,14 +136,14 @@ public class Game {
 	}
 
 	private Unit findUnit(Unit unit) {
-		if (unit.getName().equals("Zombie"))
+		if (unit.getName().equals("Intermediate Zombie"))
 			return intermediate;
-		else if (unit.getName().equals("Dracula"))
+		else if (unit.getName().equals("Advenced Zombie"))
 			return advenced;
 
 		return unit;
 	}
-	
+
 	private void meetMonster(Unit unit) {
 		System.out.println("┌────────────────────────────────────┐");
 		System.out.printf("   %s를 만났습니다.\n   ⚔️공격모드로 바뀝니다.\n", unit.getName());
@@ -166,20 +179,22 @@ public class Game {
 
 		if (unit.getHp() <= 0) {
 			System.out.printf("\n** %s를 이겼습니다.", unit.getName());
-			if (unit.getName().equals("Boss")) {
-				printWin();
-				System.out.println("- The End -");
-				isRun = false;
-				return false;
-			} else {
-				System.out.println(" 이동할 수 있습니다 **\n");
-				return false;
-			}
+			System.out.println(" 이동할 수 있습니다 **\n");
+			return false;
 		}
+
 		return true;
+	}
+	
+	private void checkClear() {
+		if(hero.getPos() == 0) {
+			printWin();
+			isRun = false;
+		}		
 	}
 
 	private void printWin() {
+		printMap();
 		System.out.println("┌────────────────────────────────────┐");
 		try {
 			System.out.println("   저 멀리 빛이 보인다..!");
@@ -197,7 +212,9 @@ public class Game {
 		} catch (Exception e) {
 		}
 		System.out.println("└────────────────────────────────────┘");
+		System.out.println(" - GAME CLEAR - ");
 	}
+
 	private void printDead() {
 		System.out.println("┌────────────────────────────────────┐");
 		try {
@@ -228,6 +245,7 @@ public class Game {
 		while (isRun) {
 			printMap();
 			move();
+			checkClear();
 		}
 	}
 }

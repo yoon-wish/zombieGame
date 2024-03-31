@@ -27,8 +27,12 @@ class Hero extends Unit implements recoverable{
 		return this.shield;
 	}
 	
+	public void setShield() {
+		this.shield += 50;
+	}
+	
 	public void setShield(int shield) {
-		this.shield += shield;
+		this.shield = shield;
 	}
 	
 	public int getPotion() {
@@ -51,7 +55,7 @@ class Hero extends Unit implements recoverable{
 					boss.setShield(boss.getShield() - power);
 				} else {	// 실드를 부셨을 때
 					boss.setShield(0);
-					boss.setHp(boss.getHp() - temp);
+					boss.setHp(boss.getHp() + temp);
 				}
 			} else 						// 실드가 존재하지 않으면
 				boss.setHp(boss.getHp() - power);
@@ -59,7 +63,11 @@ class Hero extends Unit implements recoverable{
 			if(boss.getHp() <= 0 )
 				boss.setHp(0);
 			
-			System.out.printf("[%s]가 %d의 공격력으로 공격\n♥ 현재 Boss의 hp: %d 현재 Boss의 Shield: %d\n", this.getName(), power, boss.getHp(), boss.getShield());
+			System.out.printf("[%s]가 %d의 공격력으로 공격\n", this.getName(), power);
+			super.printHp(this);
+			super.printHeroShield(this);
+			super.printHp(enemy);
+			super.printBossShield(boss);
 		} else {
 			power = rand.nextInt(getMax()) + 1;
 			enemy.setHp(enemy.getHp() - power);
@@ -69,6 +77,7 @@ class Hero extends Unit implements recoverable{
 			
 			System.out.printf("[%s]가 %d의 공격력으로 공격\n", this.getName(), power);
 			super.printHp(this);
+			super.printHeroShield(this);
 			super.printHp(enemy);
 			System.out.println();
 		}
@@ -81,7 +90,9 @@ class Hero extends Unit implements recoverable{
 				setHp(this.MAX_HP);
 			else
 				setHp(getHp() + 100);
-			System.out.println("체력 회복");
+			System.out.println("┌──────────────────────────────────────┐");
+			System.out.println("        *+:｡.｡ 체력 회복 ｡.｡:+*");
+			System.out.println("└──────────────────────────────────────┘");
 			super.printHp(this);
 			potion -= 1;
 		} else if(potion == 0) {
