@@ -9,7 +9,7 @@ public class Advanced extends Unit implements Hitable{
 
 	@Override
 	public void attack(Unit hero) {
-		power = (r.nextInt(this.getMax()) + 2) / 2;
+		power = (rand.nextInt(this.getMax()) + 2) / 2;
 
 		hero.setHp(hero.getHp() - power);
 		if (hero.getHp() <= 0)
@@ -28,7 +28,7 @@ public class Advanced extends Unit implements Hitable{
 	
 	@Override
 	public void hit(Unit hero) {
-		power = r.nextInt(3) + 1;	// 1 ~ 3 추가공격
+		power = rand.nextInt(3) + 1;	// 1 ~ 3 추가공격
 		
 		hero.setHp(hero.getHp() - power);
 		if(hero.getHp() <= 0)

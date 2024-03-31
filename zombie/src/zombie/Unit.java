@@ -12,7 +12,7 @@ abstract public class Unit {
 	private int[] hpBar;
 	private int max;
 	private boolean isEnemy;
-	public Random r;
+	public Random rand;
 
 	public Unit(String name, int pos, int hp, int max, boolean isEnemy) {
 		if (isEnemy) {
@@ -26,7 +26,7 @@ abstract public class Unit {
 		this.isEnemy = isEnemy; // 몬스터 여부
 		this.MAX_HP = hp;
 		this.MY_HP = 1;
-		r = new Random();
+		rand = new Random();
 	}
 
 	public String getName() {
@@ -64,20 +64,24 @@ abstract public class Unit {
 	public void printHp(Unit unit) {
 		double temp = unit.hp;
 		temp = Math.round(temp/10);
-		for(int i=0; i<hpBar.length; i++) {
-			hpBar[i] = 0;
+		for(int i=0; i<unit.hpBar.length; i++) {
+			unit.hpBar[i] = 0;
 		}
 		
 		for(int i=0; i<temp; i++) {
-			hpBar[i] = MY_HP;
+			unit.hpBar[i] = MY_HP;
 		}
 		
-		for(int i=0; i<hpBar.length; i++) {
-			if(hpBar[i] == MY_HP)
+		System.out.printf("[%s] HP ", unit.getName());
+		
+		for(int i=0; i<unit.hpBar.length; i++) {
+			if(unit.hpBar[i] == MY_HP)
 				System.out.print("■");
 			else
 				System.out.print("□");
 		}
+		
+		System.out.printf(" (%d/%d)\n", unit.hp, unit.MAX_HP);
 	}
 
 //	public void printZombieHp(Unit ) {

@@ -9,11 +9,22 @@ public class Beginner extends Unit {
 
 	@Override
 	public void attack(Unit hero) {
-		power = (r.nextInt(this.getMax()) + 2) / 2;
+		power = (rand.nextInt(this.getMax()) + 2) / 2;
 
-		hero.setHp(hero.getHp() - power);
-		if (hero.getHp() <= 0)
-			hero.setHp(0);
+		Hero h = (Hero) hero;
+		if(h.getShield() > 0) { // 실드가 존재하면
+			int temp = h.getShield() - power;
+			if(temp >=0) {	// 실드를 부시지 못했을 때
+				h.setShield(h.getShield() - power);
+			} else {	// 실드를 부셨을 때
+				h.setShield(0);
+				h.setHp(h.getHp() - temp);
+			}
+		} else 						// 실드가 존재하지 않으면
+			h.setHp(h.getHp() - power);
+		
+		if(h.getHp() <= 0 )
+			h.setHp(0);
 
 		// 흡혈
 		if (getHp() + (power / 2) > this.MAX_HP)

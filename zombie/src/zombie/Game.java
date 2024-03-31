@@ -41,7 +41,7 @@ public class Game {
 
 	private void setName() {
 		String name = inputHeroName();
-		hero = new Hero(name, pos, 200, 20, 3, false);
+		hero = new Hero(name, pos, 200, 20, 1, false);
 	}
 
 	private void start() {
@@ -92,6 +92,10 @@ public class Game {
 		} else if (move == 2) {
 			isRun = false;
 		}
+	}
+	
+	private void pickPotion() {
+		
 	}
 
 	private void runGame(Unit unit) {

@@ -1,12 +1,15 @@
 package zombie;
 
 class Hero extends Unit implements recoverable{
-	int power;
-	int count;
+	private int power;
+	private int potion;
+	private int shield;
 	
-	public Hero(String name, int pos, int hp, int max, int count, boolean isEnemy) {
+	
+	public Hero(String name, int pos, int hp, int max, int potion, boolean isEnemy) {
 		super(name, pos, hp, max, isEnemy);
-		this.count = count;
+		this.potion = potion;
+		this.shield = 0;
 	}
 	
 	public String getName() {
@@ -20,19 +23,27 @@ class Hero extends Unit implements recoverable{
 	public void getPrintHp() {
 	}
 	
+	public int getShield() {
+		return this.shield;
+	}
+	
+	public void setShield(int shield) {
+		this.shield += shield;
+	}
+	
 	@Override
 	public void attack(Unit enemy) {
 		if(enemy instanceof Legendary) {	// 적이 보스일 때
 			Legendary boss = (Legendary) enemy;
-			power = r.nextInt(getMax()) + 1;
+			power = rand.nextInt(getMax()) + 1;
 			
 			if(boss.getShield() > 0) { // 실드가 존재하면
-				int r = boss.getShield() - power;
-				if(r >=0) {	// 실드를 부시지 못했을 때
+				int temp = boss.getShield() - power;
+				if(temp >=0) {	// 실드를 부시지 못했을 때
 					boss.setShield(boss.getShield() - power);
 				} else {	// 실드를 부셨을 때
 					boss.setShield(0);
-					boss.setHp(boss.getHp() - r);
+					boss.setHp(boss.getHp() - temp);
 				}
 			} else 						// 실드가 존재하지 않으면
 				boss.setHp(boss.getHp() - power);
@@ -42,7 +53,7 @@ class Hero extends Unit implements recoverable{
 			
 			System.out.printf("[%s]가 %d의 공격력으로 공격\n♥ 현재 Boss의 hp: %d 현재 Boss의 Shield: %d\n", this.getName(), power, boss.getHp(), boss.getShield());
 		} else {
-			power = r.nextInt(getMax()) + 1;
+			power = rand.nextInt(getMax()) + 1;
 			enemy.setHp(enemy.getHp() - power);
 			if(enemy.getHp()<=0) {
 				enemy.setHp(0);
@@ -57,15 +68,15 @@ class Hero extends Unit implements recoverable{
 
 	@Override
 	public void recover() {
-		if(count > 0) {
+		if(potion > 0) {
 			if(getHp() + 100 > this.MAX_HP)
 				setHp(this.MAX_HP);
 			else
 				setHp(getHp() + 100);
 			System.out.println("체력 회복");
 			super.printHp(this);
-			count -= 1;
-		} else if(count == 0) {
+			potion -= 1;
+		} else if(potion == 0) {
 			System.out.println("모두 사용했습니다.");
 		}
 		
