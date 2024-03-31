@@ -4,6 +4,8 @@ import java.util.Random;
 
 abstract public class Unit {
 	public final int MAX_HP;
+	public final int MY_HP;
+	
 	private String name;
 	private int pos;
 	private int hp;
@@ -21,8 +23,9 @@ abstract public class Unit {
 		this.hp = hp;
 		this.hpBar = new int[hp/10];
 		this.max = max;
-		this.MAX_HP = hp;
 		this.isEnemy = isEnemy; // 몬스터 여부
+		this.MAX_HP = hp;
+		this.MY_HP = 1;
 		r = new Random();
 	}
 
@@ -53,7 +56,34 @@ abstract public class Unit {
 	public int getMax() {
 		return this.max;
 	}
+	
+	public int[] getHpBar() {
+		return this.hpBar;
+	}
+	
+	public void printHp(Unit unit) {
+		double temp = unit.hp;
+		temp = Math.round(temp/10);
+		for(int i=0; i<hpBar.length; i++) {
+			hpBar[i] = 0;
+		}
+		
+		for(int i=0; i<temp; i++) {
+			hpBar[i] = MY_HP;
+		}
+		
+		for(int i=0; i<hpBar.length; i++) {
+			if(hpBar[i] == MY_HP)
+				System.out.print("■");
+			else
+				System.out.print("□");
+		}
+	}
 
+//	public void printZombieHp(Unit ) {
+//		
+//	}
+	
 //	public void move() {
 //		if(this.pos <= 10) {
 //			this.pos ++;
